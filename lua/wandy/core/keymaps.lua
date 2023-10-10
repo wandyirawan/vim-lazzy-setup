@@ -57,6 +57,7 @@ map("", "i", "l", {})
 map("", "j", "e", {})
 map("", "k", "n", {})
 map("", "l", "i", {})
+map("o", "r", "i", {})
 
 -- Shortcut for quiting and saving
 map("", "Q", ":q<cr>", {})
