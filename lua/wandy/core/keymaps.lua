@@ -50,7 +50,7 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- Vim for Colemak
-map("", "m", "h", {})
+-- map("", "m", "h", {})
 map("", "n", "j", {})
 map("", "e", "k", {})
 map("", "i", "l", {})
