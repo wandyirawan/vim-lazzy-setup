@@ -14,6 +14,11 @@ return {
 	},
 	config = function()
 		local noice = require("noice")
+		local notify = require("notify")
+		notify.setup({
+
+			background_colour = "#000000",
+		})
 		noice.setup({
 			cmdline = {
 				enabled = true, -- enables the Noice cmdline UI
