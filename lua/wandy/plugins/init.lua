@@ -1,6 +1,4 @@
 return {
-    "nvim-tree/nvim-web-devicons",
-    "rust-lang/rust.vim",
-    "christoomey/vim-tmux-navigator",
-    "fatih/vim-go",
+	"nvim-tree/nvim-web-devicons",
+	"christoomey/vim-tmux-navigator",
 }
