@@ -115,6 +115,7 @@ return {
 				-- Benefit of using Noice for this is the routing and consistent history view
 				enabled = true,
 				view = "notify",
+				filter = { event = "msg_show" },
 			},
 			lsp = {
 				progress = {
