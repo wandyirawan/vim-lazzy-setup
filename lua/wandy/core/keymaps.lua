@@ -22,7 +22,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
-vim.keymap.set("n", "Q", "<nop>")
+vim.keymap.set("n", "z", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
@@ -62,3 +62,5 @@ map("o", "r", "i", {})
 -- Shortcut for quiting and saving
 map("", "Q", ":q<cr>", {})
 map("", "S", ":w<cr>", {})
+map("", "<leader>g", "<cmd>Neogit<CR>", {})
+map("", "<leader>gc", "<cmd>Neogit commit<CR>", {})
