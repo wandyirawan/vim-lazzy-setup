@@ -5,4 +5,5 @@ return {
 	"rcarriga/nvim-dap-ui",
 	"theHamsta/nvim-dap-virtual-text",
 	"tpope/vim-fugitive",
+	"mbbill/undotree",
 }
