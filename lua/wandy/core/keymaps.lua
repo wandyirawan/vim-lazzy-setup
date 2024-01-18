@@ -41,15 +41,20 @@ vim.keymap.set("n", "<leader>gsy", "<cmd> GoTagAdd yaml<CR>")
 --vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+	vim.cmd("so")
 end)
 
+-- terminal
+-- Key mappings
+vim.api.nvim_set_keymap("n", "<Leader>t", ":ToggleTerm direction=float<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>:q!<CR>", { noremap = true, silent = true })
+
 local function map(mode, lhs, rhs, opts)
-    local options = { noremap = true, silent = true }
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+	local options = { noremap = true, silent = true }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
+	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 -- Vim for Colemak

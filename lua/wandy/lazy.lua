@@ -13,11 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ import = "wandy.plugins" },
-	{ import = "wandy.plugins.lsp" },
 }, {
-	install = {
-		colorscheme = { "pine-rose" },
-	},
 	checker = {
 		enabled = true,
 		notify = false,
