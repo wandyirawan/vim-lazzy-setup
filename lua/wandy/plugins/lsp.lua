@@ -30,9 +30,6 @@ return {
 			vim.keymap.set("n", "gD", function()
 				vim.lsp.buf.declaration()
 			end, opts)
-			-- vim.keymap.set("n", "K", function()lsp
-			-- 	vim.lsp.buf.hover()
-			-- end, opts)
 			vim.keymap.set("n", "<leader>vws", function()
 				vim.lsp.buf.workspace_symbol()
 			end, opts)
@@ -54,6 +51,9 @@ return {
 			vim.keymap.set("n", "<leader>vrn", function()
 				vim.lsp.buf.rename()
 			end, opts)
+			vim.keymap.set("n", "<leader>gii", function()
+				vim.lsp.buf.implementation()
+			end, opts) -- Shortcut for implementation
 			vim.keymap.set("i", "<C-h>", function()
 				vim.lsp.buf.signature_help()
 			end, opts)
@@ -61,9 +61,21 @@ return {
 
 		require("mason").setup({})
 		require("mason-lspconfig").setup({
-			ensure_installed = { "tsserver", "rust_analyzer" },
+			ensure_installed = { "tsserver", "rust_analyzer", "gopls", "goimports-reviser", "golines" },
 			handlers = {
 				lsp_zero.default_setup,
+				gopls = function()
+					require("lspconfig").gopls.setup({
+						on_attach = lsp_zero.on_attach,
+						settings = {
+							gopls = {
+								analyses = {
+									interfaceUnimplemented = true,
+								},
+							},
+						},
+					})
+				end,
 				lua_ls = function()
 					local lua_opts = lsp_zero.nvim_lua_ls()
 					require("lspconfig").lua_ls.setup(lua_opts)
