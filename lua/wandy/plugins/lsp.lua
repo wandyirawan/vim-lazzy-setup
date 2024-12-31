@@ -1,28 +1,28 @@
 return {
-	"VonHeikemen/lsp-zero.nvim",
-	branch = "v3.x",
-	dependencies = {
-		-- LSP Support
-		{ "neovim/nvim-lspconfig" }, -- Required
-		{ -- Optional
-			"williamboman/mason.nvim",
-			run = function()
-				pcall(vim.cmd, "MasonUpdate")
-			end,
-		},
-		{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v3.x",
+    dependencies = {
+        -- LSP Support
+        { "neovim/nvim-lspconfig" }, -- Required
+        {                            -- Optional
+            "williamboman/mason.nvim",
+            run = function()
+                pcall(vim.cmd, "MasonUpdate")
+            end,
+        },
+        { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
-		-- Autocompletion
-		{ "hrsh7th/nvim-cmp" }, -- Required
-		{ "hrsh7th/cmp-nvim-lsp" }, -- Required
-		{ "L3MON4D3/LuaSnip" }, -- Required
-	},
+        -- Autocompletion
+        { "hrsh7th/nvim-cmp" },     -- Required
+        { "hrsh7th/cmp-nvim-lsp" }, -- Required
+        { "L3MON4D3/LuaSnip" },     -- Required
+    },
 
-	config = function()
-		local lsp_zero = require("lsp-zero")
+    config = function()
+        local lsp_zero = require("lsp-zero")
 
-		lsp_zero.on_attach(function(client, bufnr)
-			local opts = { buffer = bufnr, remap = false }
+        lsp_zero.on_attach(function(client, bufnr)
+            local opts = { buffer = bufnr, remap = false }
 
 			vim.keymap.set("n", "gd", function()
 				vim.lsp.buf.definition()
@@ -83,22 +83,22 @@ return {
 			},
 		})
 
-		local cmp = require("cmp")
-		local cmp_select = { behavior = cmp.SelectBehavior.Select }
+        local cmp = require("cmp")
+        local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-		cmp.setup({
-			sources = {
-				{ name = "path" },
-				{ name = "nvim_lsp" },
-				{ name = "nvim_lua" },
-			},
-			formatting = lsp_zero.cmp_format(),
-			mapping = cmp.mapping.preset.insert({
-				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-				["<C-y>"] = cmp.mapping.confirm({ select = true }),
-				["<C-Space>"] = cmp.mapping.complete(),
-			}),
-		})
-	end,
+        cmp.setup({
+            sources = {
+                { name = "path" },
+                { name = "nvim_lsp" },
+                { name = "nvim_lua" },
+            },
+            formatting = lsp_zero.cmp_format(),
+            mapping = cmp.mapping.preset.insert({
+                ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+                ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+                ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+                ["<C-Space>"] = cmp.mapping.complete(),
+            }),
+        })
+    end,
 }
